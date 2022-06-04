@@ -1,5 +1,4 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -11,15 +10,13 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const styles = {
-    backgroundImage: {
-      backgroundImage: `url(${backgroundImg})`,
-      width: "100%",
-      height: "100%",
-      padding: "0px",
-    },
     screen: {
+      backgroundImage: `url(${backgroundImg})`,
+      height: "100%",
+      backgroundSize: "cover",
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "row",
+      justifyContent: "center",
       justifyItems: "center",
     },
     modal: {
@@ -27,7 +24,6 @@ export default function SignIn() {
       padding: "0 2% 2% 2%",
       position: "fixed",
       top: "28%",
-      left: "42%",
       zIndex: 999999,
       display: "flex",
       flexDirection: "column",
@@ -49,6 +45,7 @@ export default function SignIn() {
       fontWeight: "bold",
     },
     submit: {
+      textTransform: "none",
       backgroundColor: "#003dd9",
       marginTop: "10%",
       padding: "4%",
@@ -67,11 +64,6 @@ export default function SignIn() {
 
   return (
     <Box sx={styles.screen}>
-      <Avatar
-        variant="square"
-        src={backgroundImg}
-        sx={styles.backgroundImage}
-      />
       <Box sx={styles.modal}>
         <Typography sx={styles.title}>Login</Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

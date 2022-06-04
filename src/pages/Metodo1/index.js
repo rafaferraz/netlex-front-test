@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -16,16 +15,13 @@ export default function SignInSide() {
 
   const styles = {
     page: {
+      backgroundImage: `url(${backgroundImg})`,
+      height: "100%",
+      backgroundSize: "cover",
       display: "flex",
       flexDirection: "row",
       justifyContent: "flex-start",
       alignItems: "flex-start",
-    },
-    backgroundImage: {
-      backgroundImage: `url(${backgroundImg})`,
-      width: "100%",
-      height: "100%",
-      padding: "0px",
     },
     leftBar: {
       padding: "3% 0.5%",
@@ -129,11 +125,6 @@ export default function SignInSide() {
 
   return (
     <Box sx={styles.page}>
-      <Avatar
-        variant="square"
-        src={backgroundImg}
-        sx={styles.backgroundImage}
-      />
       <Box sx={styles.leftBar}>
         <Button sx={[styles.items, styles.selected]}>Método 1</Button>
         <Button

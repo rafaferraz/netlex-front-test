@@ -1,21 +1,17 @@
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import backgroundImg from "../../assets/images/unsplash_m_7p45JfXQo.png";
 
 export default function Erro() {
   const styles = {
     screen: {
+      backgroundImage: `url(${backgroundImg})`,
+      height: "100%",
+      backgroundSize: "cover",
       display: "flex",
       flexDirection: "column",
       justifyItems: "center",
       alignItems: "center",
-    },
-    backgroundImage: {
-      backgroundImage: `url(${backgroundImg})`,
-      width: "100%",
-      height: "100%",
-      padding: "0px",
     },
     container: {
       position: "fixed",
@@ -46,11 +42,6 @@ export default function Erro() {
 
   return (
     <Box style={styles.screen}>
-      <Avatar
-        variant="square"
-        src={backgroundImg}
-        sx={styles.backgroundImage}
-      />
       <Box sx={styles.container}>
         <Typography sx={styles.title}>Error Not Found</Typography>
         <Typography sx={styles.subTitle}>404</Typography>

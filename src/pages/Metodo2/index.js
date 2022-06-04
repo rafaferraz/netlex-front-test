@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -12,21 +11,32 @@ export default function SignInSide() {
   const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
   const [word, setWord] = useState("");
-  const results = [];
+  const results = [
+    {
+      id: 1,
+      before: "The point of using",
+      word: "Lorem",
+      after:
+        "Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    },
+    {
+      id: 2,
+      before: "Contrary to popular belief,",
+      word: "Lorem",
+      after: "Ipsum is not simply random text.",
+    },
+  ];
   const number = results.length;
 
   const styles = {
     page: {
+      backgroundImage: `url(${backgroundImg})`,
+      height: "100%",
+      backgroundSize: "cover",
       display: "flex",
       flexDirection: "row",
       justifyContent: "flex-start",
       alignItems: "flex-start",
-    },
-    backgroundImage: {
-      backgroundImage: `url(${backgroundImg})`,
-      width: "100%",
-      height: "100%",
-      padding: "0px",
     },
     leftBar: {
       padding: "3% 0.5%",
@@ -97,6 +107,7 @@ export default function SignInSide() {
       backgroundColor: "#003dd9",
       color: "white",
       width: "10%",
+      marginBottom: "1.5%",
       "&:hover": {
         backgroundColor: "#003dd9",
       },
@@ -106,13 +117,14 @@ export default function SignInSide() {
       display: "flex",
       flexDirection: "row",
       gap: "4px",
-      fontSize: "40px",
+      fontSize: "20px",
+      margin: "0.5% 0",
     },
     word: {
       fontWeight: "bold",
     },
     textResults: {
-      marginTop: "2%",
+      margin: "0.5% 0",
       display: "flex",
       flexDirection: "row",
       gap: "4px",
@@ -134,15 +146,12 @@ export default function SignInSide() {
   const handleShowMessage = async (e) => {
     e.preventDefault();
     setShowMessage(true);
+    // const result = await Back.searchWord(word);
+    // const number = results.length;
   };
 
   return (
     <Box sx={styles.page}>
-      <Avatar
-        variant="square"
-        src={backgroundImg}
-        sx={styles.backgroundImage}
-      />
       <Box sx={styles.leftBar}>
         <Button
           sx={[styles.items, styles.noSelected]}
