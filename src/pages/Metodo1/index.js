@@ -118,8 +118,24 @@ export default function SignInSide() {
     navigate(`/metodo-3`);
   };
 
-  const handleShowMessage = (e) => {
+  async function getWordFrequency(e) {
     e.preventDefault();
+    const response = await fetch("documents/word-frequency", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        word: word,
+      }),
+    });
+    const data = await response.json();
+    setNumber(data.number);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getWordFrequency(e);
     setShowMessage(true);
   };
 
@@ -159,7 +175,7 @@ export default function SignInSide() {
           <Button
             type="submit"
             sx={styles.submit}
-            onClick={(e) => handleShowMessage(e)}
+            onClick={(e) => handleSubmit(e)}
           >
             Verificar
           </Button>
