@@ -95,7 +95,7 @@ export default function SignIn() {
   };
 
   async function getData(data) {
-    const response = await fetch("/api/login", {
+    const response = await fetch("/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
