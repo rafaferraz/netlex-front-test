@@ -12,6 +12,9 @@ export default function SignInSide() {
   const [showMessage, setShowMessage] = useState(false);
   const [count, setCount] = useState("");
   const [minLength, setMinLength] = useState("");
+  const [topWords, setTopWords] = useState([]);
+
+  //Example used to test the frontend:
   const results = [
     {
       word: "Lorem",
@@ -19,7 +22,7 @@ export default function SignInSide() {
     },
     {
       word: "Test",
-      count: 1000,
+      count: 10,
     },
     {
       word: "Ipsum",
@@ -145,8 +148,25 @@ export default function SignInSide() {
     navigate(`/metodo-2`);
   };
 
-  const handleShowMessage = (e) => {
+  async function getTopWords(e) {
     e.preventDefault();
+    const response = await fetch("documents/top-words", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        count: count,
+        minLength: minLength,
+      }),
+    });
+    const data = await response.json();
+    setTopWords(data);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getTopWords(e);
     setShowMessage(true);
   };
 
@@ -201,7 +221,7 @@ export default function SignInSide() {
           <Button
             type="submit"
             sx={styles.submit}
-            onClick={(e) => handleShowMessage(e)}
+            onClick={(e) => handleSubmit(e)}
           >
             Verificar
           </Button>
