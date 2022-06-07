@@ -11,6 +11,7 @@ export default function SignInSide() {
   const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
   const [word, setWord] = useState("");
+  const [sentences, setSentences] = useState([]);
   const results = [
     {
       id: 1,
@@ -143,11 +144,25 @@ export default function SignInSide() {
     navigate(`/metodo-3`);
   };
 
-  const handleShowMessage = async (e) => {
+  async function getWordSentences(e) {
     e.preventDefault();
+    const response = await fetch("documents/word-sentences", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        word: word,
+      }),
+    });
+    const data = await response.json();
+    setSentences(data.sentences);
+  }
+
+  const handleShowMessage = (e) => {
+    e.preventDefault();
+    getWordSentences(e);
     setShowMessage(true);
-    // const result = await Back.searchWord(word);
-    // const number = results.length;
   };
 
   return (
