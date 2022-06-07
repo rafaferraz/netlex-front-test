@@ -124,6 +124,8 @@ export default function SignIn() {
     } else {
       setShowAlert(true);
     }
+
+    navigate(`/metodo-1`); // Used here just to test the route to metodo-1 page. If the API is working, this line will be removed.
   };
 
   const handleCloseAlert = (e) => {
