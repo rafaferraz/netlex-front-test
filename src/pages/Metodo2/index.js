@@ -12,6 +12,7 @@ export default function SignInSide() {
   const [showMessage, setShowMessage] = useState(false);
   const [word, setWord] = useState("");
   const [sentences, setSentences] = useState([]);
+  //Example used to test the frontend:
   const results = [
     {
       id: 1,
@@ -159,7 +160,7 @@ export default function SignInSide() {
     setSentences(data.sentences);
   }
 
-  const handleShowMessage = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     getWordSentences(e);
     setShowMessage(true);
@@ -202,7 +203,7 @@ export default function SignInSide() {
             type="submit"
             sx={styles.submit}
             onClick={(e) => {
-              handleShowMessage(e);
+              handleSubmit(e);
             }}
           >
             Verificar
